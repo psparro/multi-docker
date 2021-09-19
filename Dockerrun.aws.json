@@ -1,0 +1,29 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinations": [
+        {
+            "name": "client",
+            "image": "parthpatel2021/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "parthpatel2021/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "parthpatel2021/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "parthpatel2021/multi-nginx",
+            "hostname": "client",
+            "essential": false
+        }
+    ]
+}
