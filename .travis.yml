@@ -6,10 +6,20 @@ before_install:
   - docker build -t parthpatel2021/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run parthpatel2021/react-test npm test -- --coverage
+  - docker run -e CI=true parthpatel2021/react-test npm test
 
 after_success:
   - docker build -t parthpatel2021/multi-client ./client
   - docker build -t parthpatel2021/nulti-nginx ./nginx
   - docker build -t parthpatel2021/nulti-server ./server
   - docker build -t parthpatel2021/nulti-worker ./worker
+
+# Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# Take those images an push them to docker hub
+  - docker push parthpatel2021/multi-client
+  - docker push parthpatel2021/nulti-nginx
+  - docker push parthpatel2021/nulti-server
+  - docker push parthpatel2021/nulti-worker
+
