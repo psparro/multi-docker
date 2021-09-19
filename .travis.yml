@@ -10,16 +10,16 @@ script:
 
 after_success:
   - docker build -t parthpatel2021/multi-client ./client
-  - docker build -t parthpatel2021/nulti-nginx ./nginx
-  - docker build -t parthpatel2021/nulti-server ./server
-  - docker build -t parthpatel2021/nulti-worker ./worker
+  - docker build -t parthpatel2021/multi-nginx ./nginx
+  - docker build -t parthpatel2021/multi-server ./server
+  - docker build -t parthpatel2021/multi-worker ./worker
 
 # Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # Take those images an push them to docker hub
   - docker push parthpatel2021/multi-client
-  - docker push parthpatel2021/nulti-nginx
-  - docker push parthpatel2021/nulti-server
-  - docker push parthpatel2021/nulti-worker
+  - docker push parthpatel2021/multi-nginx
+  - docker push parthpatel2021/multi-server
+  - docker push parthpatel2021/multi-worker
 
